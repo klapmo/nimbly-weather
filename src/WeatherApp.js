@@ -90,7 +90,7 @@ class WeatherApp extends React.Component {
                                 className = "search-field"
                                 onChange = {this.handleSearchChange}
                                 value = {this.state.input}
-                                placeholder = "Search..."
+                                placeholder = "Enter city..."
                         />
                         <input type="submit" id="search-button" onClick = {this.handleSearch} value="Search"/>
                     </div>
