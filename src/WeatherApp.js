@@ -4,6 +4,8 @@ import './WeatherApp.css';
 // TODO - ADD: Temperature conversion - C -> F
 // TODO - ADD: Add UI element for day/night
 // TODO - ADD: Hourly slider
+// TODO - ADD: Error message modals
+// TODO - REMOVE: Search button, have it function of enter press
 
 // colors for temp in C - 0-15 (blue), 16-26 (yellow), 27+ (red)
 
@@ -82,7 +84,6 @@ class WeatherApp extends React.Component {
             // <div className="weather-app">
             <div className={(this.state.temp < 16) ? 'weather-app cold' : 'weather-app'}>
                 <main>
-                    {/* <div id="title"><strong>Weather App</strong></div> */}
                     <div className="search-box">
                         <input
                                 type="text"
@@ -93,13 +94,17 @@ class WeatherApp extends React.Component {
                         />
                         <input type="submit" id="search-button" onClick = {this.handleSearch} value="Search"/>
                     </div>
-                    <div className="location-box">
-                        <div className="location">{this.state.locations.title}</div>
-                    </div>
-                    <div className="weather-box">
-                        <div className="temp">{this.state.temp}</div>
-                        <div className="conditions">{this.state.conditions}</div>
-                    </div>
+                    {(this.state.temp != null) ? (
+                        <div>
+                            <div className="location-box">
+                                <div className="location">{this.state.locations.title}</div>
+                            </div>
+                            <div className="weather-box">
+                                <div className="temp">{this.state.temp}°C</div>
+                                <div className="conditions">{this.state.conditions}</div>
+                            </div>
+                        </div>
+                    ) : ("")}
                 </main>
             </div>
         );
